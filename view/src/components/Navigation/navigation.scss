@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+.nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    width: 100vw;
+    &__list{
+        display: flex;
+        margin: 10px 20px;
+        &-item{
+            list-style: none;
+            margin: 10px 20px;
+        }
+    }
+    &__link{
+        font-size: 24px;
+        font-family: 'Dancing Script', cursive;
+        text-decoration: none;
+        color: white;
+        &:hover{
+            color: blue;
+            transition: .4s;
+        }
+    }
+}
