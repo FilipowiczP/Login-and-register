@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response, Router } from 'express';
 import crypto from 'crypto';
 import * as jwt from 'jsonwebtoken';
-import { create_table_users } from './tables';
-import { insert_user, verify_password } from './db';
-import { authenticateMiddleware } from './authentication';
+import { create_table_users } from '../respository/tables';
+import { insert_user, verify_password } from '../respository/db';
+import { authenticateMiddleware } from '../respository/authentication';
 export const AdminController: Router = Router();
 
 AdminController.get('/', async (req: Request, res: Response, next: NextFunction) => {

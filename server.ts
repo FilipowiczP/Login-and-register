@@ -1,5 +1,5 @@
 import express from 'express';
-import {AdminController} from './src/admin';
+import {AdminController} from './controller/admin';
 
 const app = express();
 app.use(AdminController);
