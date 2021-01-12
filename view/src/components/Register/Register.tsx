@@ -49,6 +49,11 @@ const Register = () => {
 
   return (
     <form className="form" onSubmit={(e) => handleSubmit(e as any)}>
+      {error.map((el: string, index: number) => (
+        <p key={index} className="form_error">
+          {el}
+        </p>
+      ))}
       <label className="form_label">
         Login:
         <input type="text" className="form_label-input" onChange={(e) => handleLogin(e.target.value as any)} />
