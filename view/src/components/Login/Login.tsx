@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import { LOGIN_LENGTH, PASSWORD_LENGTH } from './validation';
+
 import './login.scss';
 
 const Login = () => {
-  interface State {
+  interface Validation {
     login: string;
     password: string;
   }
 
-  const [validation, setValidation] = useState<State>({
+  const [validation, setValidation] = useState<Validation>({
     login: '',
     password: '',
   });
+  const [error, setError] = useState<string[]>([]);
 
   const handleLogin = (e: string): void => {
     setValidation({ ...validation, login: e });
@@ -20,10 +23,32 @@ const Login = () => {
     setValidation({ ...validation, password: e });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e: Event) => {
+    e.preventDefault();
+    setError([]);
+    let check: boolean = true;
+    if (validation.login.length <= LOGIN_LENGTH) {
+      const loginError: string = 'Wrong login';
+      setError((prev) => [...prev, loginError]);
+      check = false;
+    }
+    if (validation.password.length <= PASSWORD_LENGTH) {
+      const passwordError = 'Wrong passsword';
+      setError((prev) => [...prev, passwordError]);
+      check = false;
+    }
+    if (check === true) {
+      console.log('zalogowano');
+    }
+  };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={(e) => handleSubmit(e as any)}>
+      {error.map((el: string, index: number) => (
+        <p key={index} className="form_error">
+          {el}
+        </p>
+      ))}
       <label className="form_label">
         Login:
         <input type="text" className="form_label-input" onChange={(e) => handleLogin(e.target.value as any)} />
