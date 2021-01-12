@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LOGIN_LENGTH, PASSWORD_LENGTH } from './validation';
+import { LOGIN_LENGTH, PASSWORD_LENGTH } from '../validation';
 
 import './login.scss';
 
