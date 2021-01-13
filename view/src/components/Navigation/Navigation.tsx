@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import './navigation.scss';
 
 const Navigation = () => {
+  const handleLogout = (): void => {
+    localStorage.removeItem('user');
+    window.location.replace('/logout');
+  };
   if (window.localStorage.getItem('user') === null) {
     return (
       <nav className="nav">
@@ -36,7 +40,7 @@ const Navigation = () => {
             </Link>
           </li>
           <li className="nav__list-item">
-            <Link to="/" className="nav__link">
+            <Link to="/logout" className="nav__link" onClick={handleLogout}>
               Logout
             </Link>
           </li>
