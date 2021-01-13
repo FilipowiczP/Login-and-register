@@ -37,8 +37,8 @@ const Register = () => {
       setError((prev) => [...prev, loginError]);
       check = false;
     }
-    if (validation.password.length <= PASSWORD_LENGTH && validation.password === validation.repeatPassword) {
-      const passwordError = 'Wrong passsword';
+    if (validation.password.length <= PASSWORD_LENGTH && validation.password !== validation.repeatPassword) {
+      const passwordError: string = 'Wrong passsword';
       setError((prev) => [...prev, passwordError]);
       check = false;
     }

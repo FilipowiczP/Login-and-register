@@ -13,6 +13,7 @@ const Login = () => {
     login: '',
     password: '',
   });
+
   const [error, setError] = useState<string[]>([]);
 
   const handleLogin = (e: string): void => {
@@ -33,12 +34,13 @@ const Login = () => {
       check = false;
     }
     if (validation.password.length <= PASSWORD_LENGTH) {
-      const passwordError = 'Wrong passsword';
+      const passwordError: string = 'Wrong passsword';
       setError((prev) => [...prev, passwordError]);
       check = false;
     }
     if (check === true) {
-      console.log('zalogowano');
+      window.localStorage.setItem('user', validation.login);
+      window.location.replace('./');
     }
   };
 
